@@ -1,7 +1,7 @@
 ---
-name: "[Feat] 000 기능 구현"
+name: Default Issue Template
 about: Describe this issue template's purpose here.
-title: ''
+title: "[Feat] 000 기능 구현"
 labels: ''
 assignees: ''
 
