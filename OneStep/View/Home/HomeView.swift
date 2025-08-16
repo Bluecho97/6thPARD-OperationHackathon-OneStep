@@ -24,7 +24,7 @@ struct HomeView: View {
                     WeatherCell()
                         .padding(.bottom, 20)
                     
-                    TodayOneStepCell()
+                    TodayMissionCell()
                 }
             }
             .padding(16)
