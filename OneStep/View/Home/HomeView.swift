@@ -14,7 +14,7 @@ struct HomeView: View {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
             
             ScrollView {
-                VStack(spacing: 16) {
+                LazyVStack(spacing: 16) {
                     HStack(spacing: 0) {
                         CommentCell(tabStatus: .home)
                         Spacer()

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B5B00CA72E527E9A00C97AAA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5B00CA62E527E9A00C97AAA /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B5B00B0C2E4DFCD700C97AAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B00CA72E527E9A00C97AAA /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = OneStep;
 			packageProductDependencies = (
+				B5B00CA62E527E9A00C97AAA /* Lottie */,
 			);
 			productName = OneStep;
 			productReference = B5B00AFE2E4DFCD700C97AAA /* OneStep.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = B5B00AF52E4DFCD700C97AAA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B5B00CA52E527E9A00C97AAA /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B5B00AFF2E4DFCD700C97AAA /* Products */;
 			projectDirPath = "";
@@ -400,6 +409,8 @@
 				DEVELOPMENT_TEAM = UCWR6AW3FG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +439,8 @@
 				DEVELOPMENT_TEAM = UCWR6AW3FG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +571,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B5B00CA52E527E9A00C97AAA /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B5B00CA62E527E9A00C97AAA /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5B00CA52E527E9A00C97AAA /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5B00AF62E4DFCD700C97AAA /* Project object */;
 }

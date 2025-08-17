@@ -14,7 +14,7 @@ struct MissionView: View {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+                LazyVStack(alignment: .leading, spacing: 16) {
                     CommentCell(tabStatus: .mission)
                         
                     VStack(alignment: .leading, spacing: 36) {
