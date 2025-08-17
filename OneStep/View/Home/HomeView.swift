@@ -16,7 +16,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     HStack(spacing: 0) {
-                        CommentCell()
+                        CommentCell(tabStatus: .home)
                         Spacer()
                         CoinCell()
                     }
