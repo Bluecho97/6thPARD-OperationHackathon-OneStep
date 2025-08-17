@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ShopCategoryView: View {
+    @Binding var path: NavigationPath
     let myCoin:Int = 22000
     let productList: [Product] = mockProducts
-    var categoryName: String = "영화"
+    var categoryName: String 
     
     var sorting: [Int:String] = [1:"최신 등록순", 2:"많은 코인순", 3:"적은 코인순"]
     @State private var isExpanded = false
@@ -18,7 +19,6 @@ struct ShopCategoryView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            // 리스트
             ScrollView {
                 VStack(spacing: 12) {
                     ForEach(productList, id: \.self) { product in
@@ -31,17 +31,19 @@ struct ShopCategoryView: View {
             VStack(alignment:.leading, spacing:0){
                 HStack {
                     Button(action: {
-                        
+                        path.removeLast()
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.black)
                     }
+                    .frame(width:35,height:35)
                     
                     Spacer()
                     
                     HStack(spacing: 4) {
                         Image("Coin")
-                            .foregroundColor(.orange)
+                            .resizable()
+                            .frame(width:19.5,height:19.5)
                         Text("\(myCoin)")
                             .foregroundColor(.orange)
                             .bold()
@@ -60,54 +62,71 @@ struct ShopCategoryView: View {
                 )
                 
                 
-                // 정렬 버튼
-                HStack {
-                    //                Menu {
-                    //                    ForEach(sorting.keys.sorted(), id: \.self) { key in
-                    //                        Button(sorting[key]!){
-                    //                            sortingKey = key
-                    //                        }
-                    //                    }
-                    //                } label: {
-                    //                    HStack {
-                    //                        Text(sorting[sortingKey]!)
-                    //                            .font(.subheadline)
-                    //                        Image(systemName: "chevron.down")
-                    //                            .font(.caption)
-                    //                    }
-                    //                }
-                    //                Spacer()
-                    //            }
-                    Button(action: {
-                        withAnimation {
-                            isExpanded.toggle()
+                HStack{
+                    VStack(alignment:.center, spacing: 0) {
+                        Button(action: {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
+                        }) {
+                            HStack {
+                                Text(sorting[sortingKey]!)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.gray)
+                                Image(systemName: "chevron.down")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(SwiftUI.Color.white)
+                            .cornerRadius(20)
                         }
-                    }) {
-                        HStack {
-                            Text(sorting[sortingKey]!)
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.gray)
-                            Image(systemName: "chevron.down")
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                        .padding(.top,13)
+                        .padding(.bottom,5)
+                        
+                        if isExpanded {
+                            let sortedKeys = sorting.keys.sorted()
+                            VStack(alignment:.center, spacing: 0) {
+                                ForEach(sortedKeys, id: \.self) { key in
+                                    Button(action: {
+                                        sortingKey = key
+                                        withAnimation {
+                                            isExpanded.toggle()
+                                        }
+                                    }) {
+                                        Text(sorting[key]!)
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.black)
+                                            .frame(width: 112, alignment: .center)
+                                            .padding(.vertical,13)
+                                    }
+                                    .background(Color.white)
+                                    
+                                    if key != sortedKeys.last {
+                                        Divider()
+                                            .frame(width:112)
+                                            .padding(0)
+                                    }
+                                }
+                            }
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.1), radius: 5, y: 4)
+                            .transition(.opacity)
+                            .animation(.easeInOut, value: isExpanded)
+                            .padding(.bottom)
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(SwiftUI.Color.white)
-                        .cornerRadius(20)
-                        .shadow(color: SwiftUI.Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
+                        
                     }
                     Spacer()
                 }
-                .padding(.top,13)
-                .padding(.bottom,15)
-                
             }
+            .clipped()
         }
         .padding(.horizontal,20)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-#Preview {
-    ShopCategoryView()
-}
+
