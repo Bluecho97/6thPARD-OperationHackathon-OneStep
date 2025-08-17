@@ -10,9 +10,18 @@ import SwiftUI
 
 struct WeatherCell: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .frame(width: .infinity, height: 352)
-            .foregroundColor(Color.blue.opacity(0.2))
+        ZStack(alignment: .leading) {
+            Image("Sunny")
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+            VStack(spacing: 84) {
+                WeatherInformation()
+                WalkInformation()
+            }
+            .padding(24)
+        }
     }
 }
 
