@@ -7,14 +7,29 @@
 
 import SwiftUI
 
+
 struct MissionView: View {
     var body: some View {
         ZStack {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
-            Text("This is MissionView")
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    CommentCell(tabStatus: .mission)
+                        
+                    VStack(alignment: .leading, spacing: 36) {
+                        TodayCoinCell()
+                        WeekMissionCell()
+                        TodayMissionCell()
+                    }
+                }
+            }
+            .padding(16)
         }
+        
     }
 }
+
 
 #Preview {
     MissionView()

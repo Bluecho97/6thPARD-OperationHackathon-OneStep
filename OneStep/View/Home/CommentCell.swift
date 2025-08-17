@@ -10,16 +10,20 @@ import SwiftUI
 
 struct CommentCell: View {
     
-    var commentText1: String = "병희님, 오늘도 "
-    var commentText2: String = "한걸음 "
-    var commentText3: String = "딛어보아요!"
+    var tabStatus: Tab
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
-                Text(commentText1)
-                Text(commentText2).bold()
-                Text(commentText3)
+                switch tabStatus {
+                case .home:
+                    Text("병희님, 오늘도 ")
+                    Text("한걸음 ").bold()
+                    Text("딛어보아요!")
+                case .mission:
+                    Text("80코인 ").bold()
+                    Text("더 모으면 살 수 있는 상품이 있어요!")
+                }
             }
             .font(.system(size: 14))
             .foregroundColor(Color(hex: "#706360"))
@@ -80,5 +84,5 @@ struct RoundedTriangle: Shape {
 
 
 #Preview {
-    CommentCell()
+    CommentCell(tabStatus: .home)
 }
