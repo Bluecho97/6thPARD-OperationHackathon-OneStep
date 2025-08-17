@@ -7,17 +7,29 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @State var tabSelection: Tab = .home
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            switch tabSelection {
+            case .home:
+                HomeView()
+            case .mission:
+                MissionView()
+//            case .store:
+                // 상점 뷰
+//            case .my:
+                // 마이 뷰
+            }
+            
+            CustomTabView(tabSelection: $tabSelection)
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
