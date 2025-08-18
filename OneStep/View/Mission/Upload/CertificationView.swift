@@ -9,6 +9,10 @@ import SwiftUI
 
 
 struct CertificationView: View {
+    
+    @Binding var missionPath: NavigationPath
+    @Binding var capturedImage: UIImage?
+    
     var body: some View {
         ZStack {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
@@ -27,10 +31,18 @@ struct CertificationView: View {
                     .padding(.bottom, 4)
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.gray)
-                        .frame(width: 320, height: 364)
-                        .padding(.bottom, 12)
+                    if let image = capturedImage {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: 320, maxHeight: 364)
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 20)
+                            )
+                            .padding(.bottom, 12)
+                    } else {
+                        Text("이미지가 없습니다.")
+                    }
                     
                     Text("침구류 정리하고 사진찍기")
                         .font(.system(size: 16, weight: .semibold))
@@ -77,7 +89,7 @@ struct CertificationView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    missionPath.removeLast()
                 }, label: {
                     HStack {
                         Spacer()
@@ -98,10 +110,11 @@ struct CertificationView: View {
                 .padding(.bottom, 45)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
 
-#Preview {
-    CertificationView()
-}
+//#Preview {
+//    CertificationView()
+//}
