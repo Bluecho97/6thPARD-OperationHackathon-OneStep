@@ -16,7 +16,7 @@ struct WeatherCell: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             
-            VStack(spacing: 84) {
+            VStack(alignment: .leading, spacing: 84) {
                 WeatherInformation()
                 WalkInformation()
             }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WalkInformation: View {
+    
+    @StateObject var healthKitManager = HealthKitManager()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 4) {
@@ -22,10 +25,10 @@ struct WalkInformation: View {
             }
             
             HStack(spacing: 0) {
-                Text("256")
+                Text("\(healthKitManager.todaySteps)")
                     .font(.system(size: 30, weight: .medium))
                     .foregroundColor(Color(hex: "#303030"))
-                Text(" / 20,000")
+                Text(" / 10,000")
                     .font(.system(size: 17))
                     .foregroundColor(Color(hex: "#A4A7AE"))
             }
