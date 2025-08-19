@@ -31,6 +31,7 @@ struct HomeView: View {
                 TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
             }
             .padding(16)
+            .padding(.bottom, 80)
         }
         .background(Color(hex: "#FAF9F9"))
     }

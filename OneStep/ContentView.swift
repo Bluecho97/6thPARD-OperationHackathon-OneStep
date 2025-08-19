@@ -36,8 +36,8 @@ struct ContentView: View {
             }
             .navigationDestination(for: String.self) { value in
                 switch value {
-                case "First": CertificationView(missionPath: $missionPath, capturedImage: $capturedImage)
-//                case "Second": SecondView(path: $missionPath)
+                case "Certificate": CertificationView(missionPath: $missionPath, capturedImage: $capturedImage)
+                case "Album": AlbumView(missionPath: $missionPath)
 //                case "Third": ThirdView(path: $missionPath)
                 default: Text("Invalid Page")
                 }
