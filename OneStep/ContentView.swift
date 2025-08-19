@@ -14,9 +14,13 @@ struct ContentView: View {
     
     @State var tabSelection: Tab = .home
     
+    @State var showTutorial = true
+    
     @State var isOnCamera = false
     @State var isShowAnalysis = false
     @State var capturedImage: UIImage?
+    
+    @State var page: Int = 1
     
     var body: some View {
         NavigationStack(path: $missionPath) {
@@ -38,10 +42,14 @@ struct ContentView: View {
                 switch value {
                 case "Certificate": CertificationView(missionPath: $missionPath, capturedImage: $capturedImage)
                 case "Album": AlbumView(missionPath: $missionPath)
-//                case "Third": ThirdView(path: $missionPath)
+                case "SecondTutorial": SecondTutorial(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
+                case "ThirdTutorial": ThirdTutorial(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
                 default: Text("Invalid Page")
                 }
             }
+        }
+        .fullScreenCover(isPresented: $showTutorial) {
+            TutorialView(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
         }
     }
 }
