@@ -12,10 +12,10 @@ struct TodayCoinCell: View {
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
-                Text("8월 15일 (금)")
+                Text("한걸음으로 이만큼이나 모았어요!")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(Color(hex: "#DF655D"))
-                Text("오늘 모은 코인")
+                Text("내가 모은 코인")
                     .font(.system(size: 20, weight: .semibold))
             }
             

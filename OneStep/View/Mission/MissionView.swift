@@ -9,18 +9,25 @@ import SwiftUI
 
 
 struct MissionView: View {
+    
+    @Binding var missionPath: NavigationPath
+    
+    @Binding var isOnCamera: Bool
+    @Binding var isShowAnalysis: Bool
+    @Binding var capturedImage: UIImage?
+    
     var body: some View {
         ZStack {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+                LazyVStack(alignment: .leading, spacing: 16) {
                     CommentCell(tabStatus: .mission)
                         
                     VStack(alignment: .leading, spacing: 36) {
                         TodayCoinCell()
-                        WeekMissionCell()
-                        TodayMissionCell()
+                        WeekMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
+                        TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                     }
                 }
             }
@@ -31,6 +38,6 @@ struct MissionView: View {
 }
 
 
-#Preview {
-    MissionView()
-}
+//#Preview {
+//    MissionView()
+//}

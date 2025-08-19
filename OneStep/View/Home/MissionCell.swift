@@ -11,6 +11,12 @@ struct MissionCell: View {
     
     let mission: MissionDataModel
     
+    @Binding var missionPath: NavigationPath
+    
+    @Binding var isOnCamera: Bool
+    @Binding var isShowAnalysis: Bool
+    @Binding var capturedImage: UIImage?
+    
     var body: some View {
         HStack(spacing: 12) {
             Image(mission.missionImage)
@@ -20,6 +26,7 @@ struct MissionCell: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(mission.missionTitle)
+                    .font(.system(size: 16, weight: .semibold))
                 
                 HStack(spacing: 4) {
                     Image("Coin")
@@ -36,7 +43,8 @@ struct MissionCell: View {
             Spacer()
             
             Button(action: {
-                
+                isOnCamera = true
+                print("Camera On")
             }, label: {
                 Text("인증하기")
                     .font(.system(size: 14, weight: .semibold))
@@ -47,22 +55,36 @@ struct MissionCell: View {
                             .fill(Color(hex: "#FFF2EF"))
                     )
             })
+            .sheet(isPresented: $isOnCamera) {
+                CameraController { image in
+                    capturedImage = image
+                    isShowAnalysis = true
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        isShowAnalysis = false
+                        missionPath.append("First")
+                    }
+                }
+            }
         }
         .padding(EdgeInsets(top: 30, leading: 16, bottom: 30, trailing: 16))
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color(hex: "#FFFFFF"))
         )
+        .fullScreenCover(isPresented: $isShowAnalysis) {
+            AnalysisView()
+        }
     }
 }
 
-#Preview {
-    ZStack {
-        Color.gray.opacity(0.5).ignoresSafeArea(.all)
-        MissionCell(mission: MissionDataModel(
-            missionImage: "Sunny",
-            missionTitle: "하루 10분 운동하기",
-            missionCoin: 100
-        ))
-    }
-}
+//#Preview {
+//    ZStack {
+//        Color.gray.opacity(0.5).ignoresSafeArea(.all)
+//        MissionCell(mission: MissionDataModel(
+//            missionImage: "Sunny",
+//            missionTitle: "하루 10분 운동하기",
+//            missionCoin: 100
+//        ), isOnCamera: false)
+//    }
+//}
