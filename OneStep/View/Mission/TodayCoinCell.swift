@@ -26,7 +26,7 @@ struct TodayCoinCell: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                Text("100")
+                Text("2200")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color(hex: "#DF655D"))
             }
@@ -36,6 +36,7 @@ struct TodayCoinCell: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color(hex: "#FFFFFF"))
         )
+        .shadow(color: Color(hex: "#000000").opacity(0.05), radius: 30, x: 2, y: 10)
     }
 }
 
