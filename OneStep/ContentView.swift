@@ -19,10 +19,10 @@ struct ContentView: View {
                 HomeView()
             case .mission:
                 MissionView()
-//            case .store:
-                // 상점 뷰
-//            case .my:
-                // 마이 뷰
+            case .store:
+                 ShopView()
+            case .my:
+                 MyView()
             }
             
             CustomTabView(tabSelection: $tabSelection)

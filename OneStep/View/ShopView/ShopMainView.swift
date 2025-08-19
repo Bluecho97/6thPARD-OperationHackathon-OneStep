@@ -81,6 +81,7 @@ struct ShopMainView: View {
                 .padding(.horizontal, 16)
             }
         }
+        .background(Color(.systemGroupedBackground))
     }
 }
 
@@ -111,8 +112,8 @@ struct CategoryItem: View {
                 }
             }
             .frame(width: 82, height: 71)
-            .padding(.vertical, 12)
-            .padding(.horizontal, 10)
+            .padding(.vertical, 17)
+            .padding(.horizontal, 15)
             .background(SwiftUI.Color(UIColor.systemBackground))
             .cornerRadius(22)
             .shadow(color: SwiftUI.Color.black.opacity(0.05), radius: 2, y: 1)
@@ -120,5 +121,8 @@ struct CategoryItem: View {
         
     }
 }
-
+//
+//#Preview {
+//    ShopMainView()
+//}
 

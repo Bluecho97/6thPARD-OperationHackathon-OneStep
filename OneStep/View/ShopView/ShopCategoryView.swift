@@ -125,6 +125,7 @@ struct ShopCategoryView: View {
             .clipped()
         }
         .padding(.horizontal,20)
+        .background(Color(.systemGroupedBackground))
         .navigationBarBackButtonHidden(true)
     }
 }

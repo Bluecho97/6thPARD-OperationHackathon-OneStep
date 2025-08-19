@@ -76,6 +76,7 @@ struct ProductItem: View {
                     Text("구매하기")
                         .font(.caption)
                         .font(.system(size: 14))
+                        .frame(width:49,height: 18)
                         .padding(.horizontal, 11)
                         .padding(.vertical, 7)
                         .background(SwiftUI.Color.red.opacity(0.1))
@@ -85,6 +86,11 @@ struct ProductItem: View {
             }
             
         }
+        .padding(.vertical,18)
+        .padding(.leading,11)
+        .padding(.trailing,15)
+        .background(.white)
+        .cornerRadius(20)
     }
 }
 
