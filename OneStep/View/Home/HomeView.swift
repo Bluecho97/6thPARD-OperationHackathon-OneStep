@@ -17,25 +17,22 @@ struct HomeView: View {
     @Binding var capturedImage: UIImage?
     
     var body: some View {
-        ZStack {
-            Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
-            
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    HStack(spacing: 0) {
-                        CommentCell(tabStatus: .home)
-                        Spacer()
-                        CoinCell()
-                    }
-                    
-                    WeatherCell()
-                        .padding(.bottom, 20)
-                    
-                    TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                HStack(spacing: 0) {
+                    CommentCell(tabStatus: .home)
+                    Spacer()
+                    CoinCell()
                 }
+                
+                WeatherCell()
+                    .padding(.bottom, 20)
+                
+                TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
             }
             .padding(16)
         }
+        .background(Color(hex: "#FAF9F9"))
     }
 }
 

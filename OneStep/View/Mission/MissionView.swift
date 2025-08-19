@@ -17,23 +17,19 @@ struct MissionView: View {
     @Binding var capturedImage: UIImage?
     
     var body: some View {
-        ZStack {
-            Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
-            
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 16) {
-                    CommentCell(tabStatus: .mission)
-                        
-                    VStack(alignment: .leading, spacing: 36) {
-                        TodayCoinCell()
-                        WeekMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
-                        TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
-                    }
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 16) {
+                CommentCell(tabStatus: .mission)
+                
+                VStack(alignment: .leading, spacing: 36) {
+                    TodayCoinCell()
+                    WeekMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
+                    TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                 }
             }
             .padding(16)
         }
-        
+        .background(Color(hex: "#FAF9F9"))
     }
 }
 
