@@ -25,6 +25,8 @@ struct MissionView: View {
                     TodayCoinCell()
                     WeekMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                     TodayMissionCell(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
+                    AlbumCell(missionPath: $missionPath)
+                        .padding(.bottom, 80)
                 }
             }
             .padding(16)

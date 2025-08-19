@@ -24,7 +24,6 @@ struct TodayMissionCell: View {
                 MissionCell(mission: item, missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
             }
         }
-        .padding(.bottom, 80)
     }
 }
 
