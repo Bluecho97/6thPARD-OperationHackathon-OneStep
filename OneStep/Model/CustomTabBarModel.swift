@@ -11,6 +11,6 @@ import SwiftUI
 enum Tab {
     case home
     case mission
-//    case store
-//    case my
+    case store
+    case my
 }

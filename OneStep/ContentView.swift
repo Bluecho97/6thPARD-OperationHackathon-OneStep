@@ -26,10 +26,10 @@ struct ContentView: View {
                     HomeView(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                 case .mission:
                     MissionView(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
-                    //            case .store:
-                    // 상점 뷰
-                    //            case .my:
-                    // 마이 뷰
+                case .store:
+                    ShopView()
+                case .my:
+                    MyView()
                 }
                 
                 CustomTabView(tabSelection: $tabSelection)

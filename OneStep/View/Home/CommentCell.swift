@@ -23,6 +23,10 @@ struct CommentCell: View {
                 case .mission:
                     Text("80코인 ").bold()
                     Text("더 모으면 살 수 있는 상품이 있어요!")
+                case .store:
+                    Text("store")
+                case .my:
+                    Text("my")
                 }
             }
             .font(.system(size: 14))

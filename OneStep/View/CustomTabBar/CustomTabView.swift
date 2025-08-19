@@ -41,21 +41,21 @@ struct CustomTabView: View {
                     
                     Spacer()
                     
-//                    Button {
-//                        tabSelection = .store
-//                    } label: {
-//                        tabSelection == .store ? ButtonView(imageName: "Store_on") : ButtonView(imageName: "Store_off")
-//                    }
-//                    
-//                    Spacer()
-//                    
-//                    Button {
-//                        tabSelection = .my
-//                    } label: {
-//                        tabSelection == .my ? ButtonView(imageName: "My_on") : ButtonView(imageName: "My_off")
-////                    }
-//                    
-//                    Spacer()
+                    Button {
+                        tabSelection = .store
+                    } label: {
+                        tabSelection == .store ? ButtonView(imageName: "Store_on") : ButtonView(imageName: "Store_off")
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        tabSelection = .my
+                    } label: {
+                        tabSelection == .my ? ButtonView(imageName: "My_on") : ButtonView(imageName: "My_off")
+                    }
+                    
+                    Spacer()
                 }
             }
         }
