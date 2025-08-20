@@ -81,16 +81,16 @@ struct CouponCard: View {
     var body: some View {
         ZStack {
             VStack(spacing: 8) {
-                Image(coupon.imageName)
+                Image(coupon.productImageUrl)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 80)
                 
                 VStack(spacing: 2) {
-                    Text(coupon.brand)
+                    Text(coupon.brandName)
                         .font(.caption)
                         .foregroundColor(.gray)
-                    Text(coupon.title)
+                    Text(coupon.productName)
                         .font(.footnote)
                         .foregroundColor(.black)
                 }

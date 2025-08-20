@@ -131,7 +131,7 @@ struct CouponButton: View {
             manager.selectCoupon(coupon)
         } label: {
             VStack {
-                Image(coupon.imageName)
+                Image(coupon.productImageUrl)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 80, height: 80)
@@ -163,9 +163,9 @@ struct CouponModal: View {
                     .padding(.top, 8)
                 
                 VStack(spacing: 8) {
-                    Text(coupon.brand)
+                    Text(coupon.brandName)
                         .font(.subheadline)
-                    Text(coupon.title)
+                    Text(coupon.productName)
                         .font(.title3)
                         .bold()
                 }
@@ -176,7 +176,7 @@ struct CouponModal: View {
                         .foregroundColor(.gray.opacity(0.2))
                         .cornerRadius(15)
                     
-                    Image(coupon.imageName)
+                    Image(coupon.productImageUrl)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 170, height: 108)
