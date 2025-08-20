@@ -1,2 +1,226 @@
-# 6thPARD-OperationHackathon-OneStep
-파드 6기 운영진 해커톤 - 앱팀 (OneStep)
+# [PARD 6th] 운영진 롱커톤 - OneStep_iOS
+
+<img width="5760" height="3240" alt="표지" src="<img width="5760" height="3240" alt="00 표지" src="https://github.com/user-attachments/assets/41ce6d17-804b-4fbf-86b9-a584bac522dd" />" />
+
+<img width="5760" height="3240" alt="00 표지" src="https://github.com/user-attachments/assets/0b612ee2-12c5-40e4-816a-8c822873df61" />
+
+
+> 
+> [ OneStep : 한걸음 ]  
+> 은퇴 후의 외출을 즐겁게 바꾸는 서비스
+> 
+
+
+## About Service. 'OneStep'
+
+### Introduction.
+&nbsp;&nbsp;&nbsp;&nbsp;은퇴한 50~60대가 은퇴로 인한 사회적 접점 감소로
+
+&nbsp;&nbsp;&nbsp;&nbsp;외출할 명분과 동기를 잃어 고립이 심화될 위험에 놓여 있다는 문제를 파악했습니다.
+  
+&nbsp;&nbsp;&nbsp;&nbsp;저희 한걸음은 사용자의 외출 문턱을 낮추고 작은 발걸음을 습관으로 만드는 것을 넘어 사회적으로 다시  연결되는 것을 목표로합니다
+
+### Problem.
+&nbsp;&nbsp;&nbsp;&nbsp;(1) 은퇴 후 직장에서의 사회적 접점이 사라진다.
+  
+&nbsp;&nbsp;&nbsp;&nbsp;(2) 외출할 명분과 동기가 부족해 집 안에 머무는 시간이 많아진다.
+
+&nbsp;&nbsp;&nbsp;&nbsp;(3) 외출이 점점 심리적 부담으로 느껴지고, 고립이 심화된다.
+
+### Target.
+&nbsp;&nbsp;&nbsp;&nbsp;은퇴하고 사회적 접점 감소로 고립이 심해지는 50~60대
+
+### Solution.
+&nbsp;&nbsp;&nbsp;&nbsp;(1) `외출미션` : 날씨기반으로 외출 미션을 제공한다.
+  
+&nbsp;&nbsp;&nbsp;&nbsp;(2) `미션인증` : 사진을 찍어서 AI를 통해 미션인증을 합니다.
+  
+&nbsp;&nbsp;&nbsp;&nbsp;(3) `미션보상` : 미션이 인증되면 캐시보상이 지급됩니다.
+  
+&nbsp;&nbsp;&nbsp;&nbsp;(4) `생활보상` : 수집한 코인을 앱 상점 내에서 쿠폰을 구매합니다.
+
+### As-Is / To-Be
+| As-Is | To-Be |
+| --- | --- |
+| 은퇴 후 직장에서의 사회적 접점이 사라진다 | 자신의 경험을 체계적으로 정리한다 |
+| 외출할 명분과 동기가 부족해 집 안에 머무는 시간이 많아진다 | 자신의 강점을 알고 표현할 수 있다 |
+| 자신의 강점을 알지 못해 어떻게 표현할지 모른다 | 자신의 강점을 알고 표현할 수 있다 |
+
+## About Team. 'DiscoPangPang'
+&nbsp;&nbsp;&nbsp;&nbsp;`유쾌`하고 `열정` 넘치는 팀 분위기와 아이 디어가 `‘팡팡’` 튀어오르는 팀 에너지를 의미
+
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/8b1f965e-6a1f-4d49-8e36-f510cbcd8d6f" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/ef56f8ae-9953-42e3-a01a-4040cb3ac506" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/51b057cc-c418-4f78-a366-97d19f5ebdc0" width="200"></td>
+  </tr>
+  <tr>
+    <td align="center">[  Mascot. 기분이  ]</td>
+    <td align="center">[  PM. 이소원  ]</td>
+    <td align="center">[  Design. 허준우  ]</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/5f151885-737e-4225-afc8-39676a4d940a" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/713b0051-090a-483b-bd25-82ed8199516c" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/7b5b8f4e-b0fc-4118-899c-2f861aeabc92" width="200"></td>
+  </tr>
+  <tr>
+    <td align="center">[  iOS. 임재성  ]</td>
+    <td align="center">[  iOS. 조성호  ]</td>
+    <td align="center">[  Server. 한규태  ]</td>
+  </tr>
+</table>
+
+
+## Features
+
+### (1) 애플 로그인
+&nbsp;&nbsp;&nbsp;&nbsp;애플 로그인을 구현하여 사용자에게 맞는 데이터를 서버에 저장
+  
+### (2) 활동 등록
+&nbsp;&nbsp;&nbsp;&nbsp;내가 하는 활동에 대한 기본정보 등록 (활동명, 활동기간, 태그 등)
+
+### (3) Notification 알림
+&nbsp;&nbsp;&nbsp;&nbsp;내가 등록한 활동의 마감기한이 지나면 Notification 알림을 통해서 기록 유도
+
+### (4) 활동 기록
+&nbsp;&nbsp;&nbsp;&nbsp;활동을 통해 배운 점들을 기록한다
+  - 태그 : 내가 한 활동에서 배운점들을 터치로 쉽게 기록 (직무에 필요한 강점 : 4개 도메인 34개 태그)
+  - STARL 기법 : 내가 한 활동에서 배운 점들을 STARL 기법으로 체계적으로 기록
+
+### (5) 활동 분석
+&nbsp;&nbsp;&nbsp;&nbsp;내가 활동에서 각 도메인의 상위 5개의 강점들을 분석하여 시각적으로 제시  ->  강점에 따라 도형이 커짐
+
+
+## App Flow
+
+- 스플래쉬 뷰 + 애플 로그인 + 홈뷰
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/21356c39-9946-4b20-8790-1d3a7a7dbddb" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/e660f516-9a36-4ddf-8f0b-74c784ad4a84" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/640d75fb-64ba-4ef5-b35d-067127c5fb73" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/65562e14-2786-486e-b2a6-81119d802919" width="150"></td>
+  </tr>
+  <tr>
+    <td align="center">[  스플래쉬 뷰 ]</td>
+    <td align="center">[  애플 로그인 1  ]</td>
+    <td align="center">[  애플 로그인 2  ]</td>
+    <td align="center">[  메인 뷰  ]</td>
+  </tr>
+</table>
+
+- 활동 등록 + Notification 알림
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/86111f41-70fc-487e-941b-383626273a0b" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/ad64ca5e-fe64-4aa8-9d02-45ce94d57c97" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/37dbcd70-f7cd-4e45-a83f-0f9ac02d0c15" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/b00ff96f-25cf-4065-b959-66140c02b0aa" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/102ed8e0-4a4f-4f89-9ab1-63ed31e4500e" width="150"></td>
+    <td><img src="https://github.com/user-attachments/assets/460b3c72-6dc7-45b6-ab96-36e54a4dbab1" width="150"></td>
+  </tr>
+  <tr>
+    <td align="center">[  활동등록  ]</td>
+    <td align="center">[  태그선택 1  ]</td>
+    <td align="center">[  태그선택 2  ]</td>
+    <td align="center">[  태그선택 3  ]</td>
+    <td align="center">[  태그선택 4  ]</td>
+    <td align="center">[ Notification 알림 ]</td>
+  </tr>
+</table>
+
+- 활동 기록
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/e612bd41-939b-49e0-8fa5-03aaaa06a48f" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/ed55bc4a-9164-4256-98a4-4efb85d44223" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/e5bf6d07-01a9-4ef1-84b3-efc0129833cd" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/bcc0c684-523e-42b4-8ab5-947e29a265f2" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/5989773c-95a9-4201-b77f-b390528926aa" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center">[  질문 1  ]</td>
+    <td align="center">[  질문 2  ]</td>
+    <td align="center">[  질문 3  ]</td>
+    <td align="center">[  질문 4  ]</td>
+    <td align="center">[  질문 5  ]</td>
+  </tr>
+</table>
+
+- 히스토리
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/7c9d1d25-3c67-4455-930f-9d341297739e" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/62a256b3-2955-427b-8c52-4979f92f1105" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/16ce6a51-a9f7-451c-9a2d-eb1c172b3ac1" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/ba74423c-f65e-47f9-b192-88b4b4950351" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/41a766c2-d8b0-423a-a460-baac624b9709" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center">[  히스토리 뷰  ]</td>
+    <td align="center">[  히스토리 1  ]</td>
+    <td align="center">[  히스토리 2  ]</td>
+    <td align="center">[  히스토리 3  ]</td>
+    <td align="center">[  히스토리 4  ]</td>
+  </tr>
+</table>
+
+- 활동 분석
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/e616f853-98ad-412f-9ee2-38dce296c54c" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/437ec0ca-b7fc-40c1-8d1d-5370abb0b0cb" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/9cdebc8c-4b84-4cc2-b3d8-1d35bd9d6244" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/d1de9a94-fd81-4333-8e4e-c3cd6e8c2b7c" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/8ead02cb-2695-46a5-807d-773fea0cdc60" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center">[  활동분석 뷰  ]</td>
+    <td align="center">[  활동분석 1  ]</td>
+    <td align="center">[  활동분석 2  ]</td>
+    <td align="center">[  활동분석 3  ]</td>
+    <td align="center">[  활동분석 4  ]</td>
+  </tr>
+</table>
+
+
+## Tech Stack
+
+### FrontEnd.
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/iOS-000000?style=flat&logo=apple&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Swift-FA7343?style=flat&logo=swift&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/SwiftUI-2E86C1?style=flat&logo=swift&logoColor=white"/>
+</p>
+
+### BackEnd.
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=OpenJDK&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=Amazon%20AWS&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/EC2-FF9900?style=flat&logo=Amazon%20EC2&logoColor=white"/>
+</p>
+  
+### Collaboration Tools.
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
+</p>
+
+
+## App Link
+
+&nbsp;&nbsp;&nbsp;&nbsp;배포 예정.
+
+---
+
+# Thank you! :)
+
+
+
