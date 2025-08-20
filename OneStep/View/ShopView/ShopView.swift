@@ -10,20 +10,16 @@ import SwiftUI
 
 struct ShopView: View {
     
-    @State private var path = NavigationPath()
+    @Binding var path:NavigationPath
     @ObservedObject var purchaseManager: PurchaseManager
+    
     var body: some View {
         ZStack{
-            NavigationStack(path:$path){
-                ShopMainView(path:$path)
-                    .navigationDestination(for: String.self) { item in
-                        ShopCategoryView(path:$path, categoryName: item)
-                    }
-            }
-            
-            
+            ShopMainView(path:$path, purchaseManager: purchaseManager )
+                .navigationDestination(for: String.self) { item in
+                    ShopCategoryView(path:$path, purchaseManager: purchaseManager, categoryName: item)
+                }
         }
-        .environmentObject(purchaseManager)
     }
 }
 
@@ -32,7 +28,7 @@ struct ShopView: View {
 
 struct ProductItem: View {
     var product: Product
-    @EnvironmentObject var purchaseManager: PurchaseManager
+    @ObservedObject var purchaseManager: PurchaseManager
     
     var body: some View {
         HStack(spacing: 15) {
@@ -90,7 +86,7 @@ struct ProductItem: View {
 
 
 struct PurchaseModal: View {
-    @EnvironmentObject var purchaseManager: PurchaseManager
+    @ObservedObject var purchaseManager: PurchaseManager
     
     var body: some View {
         ZStack {
