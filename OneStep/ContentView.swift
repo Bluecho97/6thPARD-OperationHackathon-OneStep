@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+//    @State private var isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+    
     @State var missionPath = NavigationPath()
     
     @State var tabSelection: Tab = .home
@@ -51,6 +53,7 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showTutorial) {
             TutorialView(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
         }
+        
     }
 }
 

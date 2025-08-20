@@ -11,13 +11,14 @@ import SwiftUI
 struct CommentCell: View {
     
     var tabStatus: Tab
+    let name = UserDefaults.standard.string(forKey: "appleUserName") ?? "사용자"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
                 switch tabStatus {
                 case .home:
-                    Text("병희님, 오늘도 ")
+                    Text("\(name)님, 오늘도 ")
                     Text("한걸음 ").bold()
                     Text("딛어보아요!")
                 case .mission:
