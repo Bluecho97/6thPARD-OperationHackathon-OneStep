@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ShopMainView: View {
     @Binding var path : NavigationPath
+    @ObservedObject var purchaseManager: PurchaseManager
+    
     var myCoin: Int = 2200
     let Categorys: [String: String] = ["식사":"Meal", "영화":"Film", "생필품":"Live", "과자":"Snack", "카페":"Cafe", "화장품":"Beauty"]
     let productList: [Product] = mockProducts
@@ -72,7 +74,7 @@ struct ShopMainView: View {
                             .font(.system(size:20))
                             .foregroundColor(SwiftUI.Color.black)
                         ForEach(productList, id: \.self){ product in
-                            ProductItem(product:product)
+                            ProductItem(product:product, purchaseManager: purchaseManager)
                         }
                         
                     }

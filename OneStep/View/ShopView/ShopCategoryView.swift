@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShopCategoryView: View {
     @Binding var path: NavigationPath
+    @ObservedObject var purchaseManager: PurchaseManager
     let myCoin:Int = 22000
     let productList: [Product] = mockProducts
     var categoryName: String 
@@ -22,7 +23,7 @@ struct ShopCategoryView: View {
             ScrollView {
                 VStack(spacing: 12) {
                     ForEach(productList, id: \.self) { product in
-                        ProductItem(product: product)
+                        ProductItem(product: product, purchaseManager: purchaseManager)
                     }
                 }
             }

@@ -38,9 +38,9 @@ struct ContentView: View {
                 case .mission:
                     MissionView(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                 case .store:
-                    ShopView(purchaseManager: purchaseManager)
+                    ShopView(path: $missionPath, purchaseManager: purchaseManager)
                 case .my:
-                    MyView(manager:manager, infoManager:infoManager)
+                    MyView(path: $missionPath, manager:manager, infoManager:infoManager)
                 }
                 
                 CustomTabView(tabSelection: $tabSelection)
@@ -54,7 +54,9 @@ struct ContentView: View {
                     InfoModal(manager: infoManager)
                 }
                 if purchaseManager.isShowingPurchase {
-                    PurchaseModal()
+                    PurchaseModal(purchaseManager: purchaseManager)
+                        .ignoresSafeArea()
+                        .zIndex(2) // 항상 최상단
                 }
             }
             .navigationDestination(for: String.self) { value in
@@ -70,6 +72,17 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showTutorial) {
             TutorialView(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
         }
+        .fullScreenCover(isPresented: $purchaseManager.isShowingPurchase) {
+            PurchaseModal(purchaseManager: purchaseManager)
+                .background(Color.clear)
+        }
+        .fullScreenCover(isPresented: $manager.showModal) {
+            if let selected = manager.selectedCoupon {
+                CouponModal(coupon: selected, manager: manager)
+                    .background(Color.clear)
+            }
+        }
+        
         
     }
 }

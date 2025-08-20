@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct MyView: View {
+    @Binding var path:NavigationPath
+    
     @ObservedObject var manager = CouponManager()
     @ObservedObject var infoManager = InfoManager()
     @StateObject private var viewModel = MyViewModel()
     
-    @State private var path = NavigationPath()
     let appleToken = UserDefaults.standard.string(forKey: "appleToken") ?? ""
     
     var body: some View {
@@ -285,7 +286,7 @@ struct SettingsCardView: View {
         .padding(.horizontal, 20)
     }
 }
-
-#Preview {
-    MyView()
-}
+//
+//#Preview {
+//    MyView()
+//}
