@@ -10,17 +10,23 @@ import SwiftUI
 
 struct CouponStorageView: View {
     @Binding var path: NavigationPath
-    let coupons: [Coupon] = mockCoupons
+    @ObservedObject var viewModel: MyViewModel
+    @ObservedObject var manager: CouponManager
+    
+    let appleToken = UserDefaults.standard.string(forKey: "appleToken") ?? ""
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ZStack{
             VStack(spacing: 0) {
-                // 상단 네비 영역
                 HStack {
                     Button(action: {
                         path.removeLast()
+                        Task {
+                            await viewModel.fetchMissionDays(appleToken: appleToken)
+                            await viewModel.fetchCoupons(appleToken: appleToken)
+                        }
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.black)
@@ -60,8 +66,8 @@ struct CouponStorageView: View {
                         
                         // 쿠폰 그리드
                         LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(coupons, id:\.self) { coupon in
-                                CouponCard(coupon: coupon)
+                            ForEach(viewModel.coupons, id:\.id) { coupon in
+                                CouponCard(coupon: coupon,manager:manager)
                             }
                         }
                         .padding(.horizontal)
@@ -71,15 +77,22 @@ struct CouponStorageView: View {
             }
             .ignoresSafeArea(edges: .bottom)
             .background(Color(.systemGroupedBackground))
+            .task {
+                await viewModel.fetchCoupons(appleToken: appleToken)
+            }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct CouponCard: View {
     let coupon: Coupon
+    @ObservedObject var manager: CouponManager
     
     var body: some View {
-        ZStack {
+        Button {
+            manager.selectCoupon(coupon)
+        } label: {
             VStack(spacing: 8) {
                 Image(coupon.productImageUrl)
                     .resizable()
@@ -103,7 +116,4 @@ struct CouponCard: View {
         }
     }
 }
-//
-//#Preview {
-//    CouponStorageView()
-//}
+

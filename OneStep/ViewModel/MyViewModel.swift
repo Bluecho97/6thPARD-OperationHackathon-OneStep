@@ -14,7 +14,48 @@ struct MissionDaysResponse: Codable {
     public let missionCompletionDays: Int
 }
 
+let mockMissionDays:MissionDaysResponse = MissionDaysResponse(userName: "김경동", missionCompletionDays: 7)
+
 final class MyViewModel: ObservableObject {
+    @Published var missionDays: MissionDaysResponse? = nil
+    @Published var coupons: [Coupon] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
+    
+    public func fetchMissionDays(appleToken: String) async {
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let result = try await getMissionDays(appleToken: appleToken)
+            DispatchQueue.main.async {
+                self.missionDays = result
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.missionDays = mockMissionDays
+//                self.errorMessage = "미션 데이터를 불러오지 못했습니다."
+            }
+        }
+    }
+    
+    public func fetchCoupons(appleToken: String) async {
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let result = try await getCoupons(appleToken: appleToken)
+            DispatchQueue.main.async {
+                self.coupons = result
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.coupons = mockCoupons
+//                self.errorMessage = "쿠폰 데이터를 불러오지 못했습니다."
+            
+            }
+        }
+    }
+    
+    
     public func getMissionDays(appleToken: String) async throws -> MissionDaysResponse {
         let urlString = BaseURL.baseUrl.rawValue
         guard let url = URL(string: "\(urlString)/api/users/mission-days") else {
