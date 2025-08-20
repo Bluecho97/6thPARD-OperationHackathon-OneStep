@@ -1,21 +1,8 @@
 import SwiftUI
 
-class CouponManager: ObservableObject {
-    @Published var selectedCoupon: Coupon? = nil
-    @Published var showModal: Bool = false
-    
-    func selectCoupon(_ coupon: Coupon) {
-        selectedCoupon = coupon
-        showModal = true
-    }
-}
-class InfoManager: ObservableObject {
-    @Published var showInfo: Bool = false
-}
-
 struct MyView: View {
-    @StateObject private var manager = CouponManager()
-    @StateObject private var infoManager = InfoManager()
+    @ObservedObject var manager = CouponManager()
+    @ObservedObject var infoManager = InfoManager()
     @StateObject private var viewModel = MyViewModel()
     
     @State private var path = NavigationPath()
@@ -108,14 +95,7 @@ struct MyView: View {
                     }
                     
                 }
-                if manager.showModal{
-                    if let selected = manager.selectedCoupon {
-                        CouponModal(coupon: selected, manager: manager)
-                    }
-                }
-                if infoManager.showInfo{
-                    InfoModal(manager: infoManager)
-                }
+                
             }
             .navigationDestination(for: String.self) { item in
                 if item == "CouponStorage" {

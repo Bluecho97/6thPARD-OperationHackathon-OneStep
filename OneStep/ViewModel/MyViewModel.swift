@@ -16,6 +16,19 @@ struct MissionDaysResponse: Codable {
 
 let mockMissionDays:MissionDaysResponse = MissionDaysResponse(userName: "김경동", missionCompletionDays: 7)
 
+class CouponManager: ObservableObject {
+    @Published var selectedCoupon: Coupon? = nil
+    @Published var showModal: Bool = false
+    
+    func selectCoupon(_ coupon: Coupon) {
+        selectedCoupon = coupon
+        showModal = true
+    }
+}
+class InfoManager: ObservableObject {
+    @Published var showInfo: Bool = false
+}
+
 final class MyViewModel: ObservableObject {
     @Published var missionDays: MissionDaysResponse? = nil
     @Published var coupons: [Coupon] = []
