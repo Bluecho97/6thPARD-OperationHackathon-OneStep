@@ -14,60 +14,63 @@ class InfoManager: ObservableObject {
 }
 
 struct MyView: View {
-    @State private var path = NavigationPath()
-    
-    let coupons: [Coupon] = mockCoupons // 이미지 이름
     @StateObject private var manager = CouponManager()
     @StateObject private var infoManager = InfoManager()
+    @StateObject private var viewModel = MyViewModel()
     
-    let name = UserDefaults.standard.string(forKey: "appleUserName") ?? "사용자"
+    @State private var path = NavigationPath()
+    let appleToken = UserDefaults.standard.string(forKey: "appleToken") ?? ""
     
     var body: some View {
-        NavigationStack(path:$path){
+        NavigationStack(path: $path) {
             ZStack(alignment:.top){
                 Color(.systemGroupedBackground).ignoresSafeArea()
                 VStack(spacing: 0) {
-                    
-                    VStack(alignment: .leading, spacing: 00) {
-                        Text("오늘도 한걸음 더 나아가는 멋진 당신!")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                        
-                        Text("\(name)님")
-                            .font(.title2)
-                            .bold()
-                            .padding(.top,8)
-                        
-                        HStack {
-                            Text("미션 완료 일수")
-                                .font(.system(size:15))
-                                .foregroundColor(.gray)
-                            Button{
-                                infoManager.showInfo = true
-                            } label: {
-                                VStack{
-                                    Image("Info")
-                                        .resizable()
-                                        .frame(width:18,height:18)
-                                }
-                            }
-                            Spacer()
-                            Text("+7일째")
-                                .font(.system(size:15))
+                    if let mission = viewModel.missionDays {
+                        VStack(alignment: .leading, spacing: 00) {
+                            Text("오늘도 한걸음 더 나아가는 멋진 당신!")
+                                .font(.caption)
                                 .foregroundColor(.red)
+                            
+                            Text("\(mission.userName)님")
+                                .font(.title2)
                                 .bold()
+                                .padding(.top,8)
+                            
+                            HStack {
+                                Text("미션 완료 일수")
+                                    .font(.system(size:15))
+                                    .foregroundColor(.gray)
+                                Button{
+                                    infoManager.showInfo = true
+                                } label: {
+                                    VStack{
+                                        Image("Info")
+                                            .resizable()
+                                            .frame(width:18,height:18)
+                                    }
+                                }
+                                Spacer()
+                                Text("+\(mission.missionCompletionDays)일째")
+                                    .font(.system(size:15))
+                                    .foregroundColor(.red)
+                                    .bold()
+                            }
+                            .padding(.horizontal,18)
+                            .padding(.vertical,16)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
+                            .padding(.top,32)
                         }
-                        .padding(.horizontal,18)
-                        .padding(.vertical,16)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .padding(.top,32)
+                        .padding(20)
+                        .background(Color.white)
+                        .cornerRadius(12)
+                        .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 2)
+                        .padding(.horizontal,20)
+                    } else if viewModel.isLoading {
+                        ProgressView("로딩 중...")
                     }
-                    .padding(20)
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 2)
-                    .padding(.horizontal,20)
+                    
                     
                     VStack(alignment: .leading,spacing: 0) {
                         HStack {
@@ -84,7 +87,7 @@ struct MyView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
-                                ForEach(coupons, id: \.id) { coupon in
+                                ForEach(viewModel.coupons, id: \.id) { coupon in
                                     CouponButton(coupon:coupon, manager:manager)
                                 }
                             }
@@ -116,11 +119,23 @@ struct MyView: View {
             }
             .navigationDestination(for: String.self) { item in
                 if item == "CouponStorage" {
-                    CouponStorageView(path:$path)
+                    CouponStorageView(path:$path, viewModel: viewModel, manager: manager)
                 }
             }
-
+            .task {
+                await viewModel.fetchMissionDays(appleToken: appleToken)
+                await viewModel.fetchCoupons(appleToken: appleToken)
+            }
+            .onChange(of: path.count) { newCount in
+                if newCount == 0 { // CouponStorageView에서 돌아왔을 때
+                    Task {
+                        await viewModel.fetchMissionDays(appleToken: appleToken)
+                        await viewModel.fetchCoupons(appleToken: appleToken)
+                    }
+                }
+            }
         }
+        
     }
 }
 
@@ -133,7 +148,7 @@ struct CouponButton: View {
             manager.selectCoupon(coupon)
         } label: {
             VStack {
-                Image(coupon.imageName)
+                Image(coupon.productImageUrl)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 80, height: 80)
@@ -165,9 +180,9 @@ struct CouponModal: View {
                     .padding(.top, 8)
                 
                 VStack(spacing: 8) {
-                    Text(coupon.brand)
+                    Text(coupon.brandName)
                         .font(.subheadline)
-                    Text(coupon.title)
+                    Text(coupon.productName)
                         .font(.title3)
                         .bold()
                 }
@@ -178,7 +193,7 @@ struct CouponModal: View {
                         .foregroundColor(.gray.opacity(0.2))
                         .cornerRadius(15)
                     
-                    Image(coupon.imageName)
+                    Image(coupon.productImageUrl)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 170, height: 108)
@@ -260,7 +275,7 @@ struct InfoModal: View {
             .shadow(radius: 10)
         }
     }
-
+    
 }
 
 struct SettingsCardView: View {

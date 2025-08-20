@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-class PurchaseManager: ObservableObject {
-    @Published var isShowingPurchase = false
-    @Published var product: Product? = nil
-}
 
 struct ShopView: View {
     
@@ -42,14 +38,14 @@ struct ProductItem: View {
     
     var body: some View {
         HStack(spacing: 15) {
-            Image(product.productImageName)
+            Image(product.productImageUrl)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 70, height: 70)
                 .foregroundColor(SwiftUI.Color.green)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(product.productBrand)
+                Text(product.brandName)
                     .font(.subheadline)
                     .font(.system(size: 13))
                     .foregroundColor(SwiftUI.Color.gray)
@@ -61,7 +57,7 @@ struct ProductItem: View {
                     Image("Coin")
                         .resizable()
                         .frame(width:15,height:15)
-                    Text("\(product.price)")
+                    Text("\(product.coinPrice)")
                         .font(.subheadline)
                         .font(.system(size: 14))
                         .foregroundColor(SwiftUI.Color.red)
@@ -108,14 +104,14 @@ struct PurchaseModal: View {
             
             VStack{
                 VStack(spacing: 16) {
-                    Text(purchaseManager.product!.productBrand)
+                    Text(purchaseManager.product!.brandName)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     Text(purchaseManager.product!.productName)
                         .font(.headline)
                         .bold()
                     
-                    Image(purchaseManager.product!.productImageName)
+                    Image(purchaseManager.product!.productImageUrl)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 180)
@@ -123,7 +119,7 @@ struct PurchaseModal: View {
                     HStack(spacing: 4) {
                         Image("Coin") // 코인 이미지
                             .foregroundColor(.yellow)
-                        Text("\(purchaseManager.product!.price)")
+                        Text("\(purchaseManager.product!.coinPrice)")
                             .bold()
                             .foregroundColor(.orange)
                     }
