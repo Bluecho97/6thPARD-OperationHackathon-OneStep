@@ -19,7 +19,7 @@ struct CustomTabView: View {
             ZStack {
                 Rectangle()
                     .fill(Color(hex: "#FFFFFF"))
-                    .frame(height: 112)
+                    .frame(height: 108)
                     .clipShape(RoundedCorners(radius: 30, corners: [.topLeft, .topRight]))
                 
                 HStack {
@@ -57,6 +57,7 @@ struct CustomTabView: View {
                     
                     Spacer()
                 }
+                .offset(x: 0, y: -4)
             }
         }
         .ignoresSafeArea(.all)

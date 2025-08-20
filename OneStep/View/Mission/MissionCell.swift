@@ -62,7 +62,7 @@ struct MissionCell: View {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         isShowAnalysis = false
-                        missionPath.append("First")
+                        missionPath.append("Certificate")
                     }
                 }
             }

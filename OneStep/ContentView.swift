@@ -10,13 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     
+//    @State private var isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+    
     @State var missionPath = NavigationPath()
     
     @State var tabSelection: Tab = .home
     
+    @State var showTutorial = true
+    
     @State var isOnCamera = false
     @State var isShowAnalysis = false
     @State var capturedImage: UIImage?
+    
+    @State var page: Int = 1
     
     var body: some View {
         NavigationStack(path: $missionPath) {
@@ -36,13 +42,18 @@ struct ContentView: View {
             }
             .navigationDestination(for: String.self) { value in
                 switch value {
-                case "First": CertificationView(missionPath: $missionPath, capturedImage: $capturedImage)
-//                case "Second": SecondView(path: $missionPath)
-//                case "Third": ThirdView(path: $missionPath)
+                case "Certificate": CertificationView(missionPath: $missionPath, capturedImage: $capturedImage)
+                case "Album": AlbumView(missionPath: $missionPath)
+                case "SecondTutorial": SecondTutorial(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
+                case "ThirdTutorial": ThirdTutorial(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
                 default: Text("Invalid Page")
                 }
             }
         }
+        .fullScreenCover(isPresented: $showTutorial) {
+            TutorialView(missionPath: $missionPath, showTutorial: $showTutorial, page: $page)
+        }
+        
     }
 }
 
