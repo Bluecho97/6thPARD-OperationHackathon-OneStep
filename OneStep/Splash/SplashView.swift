@@ -9,19 +9,31 @@ import SwiftUI
 
 
 struct SplashView: View {
+    
+    var onLoginSuccess: () -> Void
+//    @State private var isLoggedIn = false
+    
     var body: some View {
         ZStack {
             Color(hex: "#FAF9F9").ignoresSafeArea(edges: .all)
             
-            Image("Splash")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 172, height: 276)
+            VStack(spacing:  0) {
+                Image("Splash")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 172, height: 276)
+                    .padding(.vertical, 120)
+                
+                AppleLogIn {
+//                    isLoggedIn = true
+                    onLoginSuccess()
+                }
+            }
         }
     }
 }
 
 
-#Preview {
-    SplashView()
-}
+//#Preview {
+//    SplashView()
+//}

@@ -20,6 +20,8 @@ struct MyView: View {
     @StateObject private var manager = CouponManager()
     @StateObject private var infoManager = InfoManager()
     
+    let name = UserDefaults.standard.string(forKey: "appleUserName") ?? "사용자"
+    
     var body: some View {
         NavigationStack(path:$path){
             ZStack(alignment:.top){
@@ -31,7 +33,7 @@ struct MyView: View {
                             .font(.caption)
                             .foregroundColor(.red)
                         
-                        Text("김병희님")
+                        Text("\(name)님")
                             .font(.title2)
                             .bold()
                             .padding(.top,8)
