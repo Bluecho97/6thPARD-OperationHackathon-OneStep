@@ -7,6 +7,7 @@ struct MyView: View {
     
     @State private var path = NavigationPath()
     let appleToken = UserDefaults.standard.string(forKey: "appleToken") ?? ""
+    let name = UserDefaults.standard.string(forKey: "appleUserName") ?? "사용자"
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -19,7 +20,7 @@ struct MyView: View {
                                 .font(.caption)
                                 .foregroundColor(.red)
                             
-                            Text("\(mission.userName)님")
+                            Text("\(name)님")
                                 .font(.title2)
                                 .bold()
                                 .padding(.top,8)
