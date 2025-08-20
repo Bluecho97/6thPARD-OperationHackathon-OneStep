@@ -24,6 +24,11 @@ struct ContentView: View {
     
     @State var page: Int = 1
     
+    
+    @StateObject var purchaseManager = PurchaseManager()
+    @StateObject var manager = CouponManager()
+    @StateObject var infoManager = InfoManager()
+    
     var body: some View {
         NavigationStack(path: $missionPath) {
             ZStack {
@@ -33,12 +38,24 @@ struct ContentView: View {
                 case .mission:
                     MissionView(missionPath: $missionPath, isOnCamera: $isOnCamera, isShowAnalysis: $isShowAnalysis, capturedImage: $capturedImage)
                 case .store:
-                    ShopView()
+                    ShopView(purchaseManager: purchaseManager)
                 case .my:
-                    MyView()
+                    MyView(manager:manager, infoManager:infoManager)
                 }
                 
                 CustomTabView(tabSelection: $tabSelection)
+                
+                if manager.showModal{
+                    if let selected = manager.selectedCoupon {
+                        CouponModal(coupon: selected, manager: manager)
+                    }
+                }
+                if infoManager.showInfo{
+                    InfoModal(manager: infoManager)
+                }
+                if purchaseManager.isShowingPurchase {
+                    PurchaseModal()
+                }
             }
             .navigationDestination(for: String.self) { value in
                 switch value {

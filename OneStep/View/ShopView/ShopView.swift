@@ -11,7 +11,7 @@ import SwiftUI
 struct ShopView: View {
     
     @State private var path = NavigationPath()
-    @StateObject var purchaseManager = PurchaseManager()
+    @ObservedObject var purchaseManager: PurchaseManager
     var body: some View {
         ZStack{
             NavigationStack(path:$path){
@@ -20,9 +20,7 @@ struct ShopView: View {
                         ShopCategoryView(path:$path, categoryName: item)
                     }
             }
-            if purchaseManager.isShowingPurchase {
-                PurchaseModal()
-            }
+            
             
         }
         .environmentObject(purchaseManager)
@@ -134,6 +132,7 @@ struct PurchaseModal: View {
                     Button(action: {
                         print("구매 완료!")
                     }) {
+                        
                         Text("구매하기")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -156,7 +155,4 @@ struct PurchaseModal: View {
         .animation(.easeInOut, value: purchaseManager.isShowingPurchase)
         .transition(.opacity)
     }
-}
-#Preview {
-    ShopView()
 }
