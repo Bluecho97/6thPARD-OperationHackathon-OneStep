@@ -1,9 +1,6 @@
 # [PARD 6th] 운영진 롱커톤 - OneStep_iOS
 
-<img width="5760" height="3240" alt="표지" src="<img width="5760" height="3240" alt="00 표지" src="https://github.com/user-attachments/assets/41ce6d17-804b-4fbf-86b9-a584bac522dd" />" />
-
 <img width="5760" height="3240" alt="00 표지" src="https://github.com/user-attachments/assets/0b612ee2-12c5-40e4-816a-8c822873df61" />
-
 
 > 
 > [ OneStep : 한걸음 ]  
@@ -42,9 +39,9 @@
 ### As-Is / To-Be
 | As-Is | To-Be |
 | --- | --- |
-| 은퇴 후 직장에서의 사회적 접점이 사라진다 | 자신의 경험을 체계적으로 정리한다 |
-| 외출할 명분과 동기가 부족해 집 안에 머무는 시간이 많아진다 | 자신의 강점을 알고 표현할 수 있다 |
-| 자신의 강점을 알지 못해 어떻게 표현할지 모른다 | 자신의 강점을 알고 표현할 수 있다 |
+| 은퇴 후 직장에서의 사회적 접점이 사라진다 | 작은 계기를 통해 집 밖으로 한 발 내딛게 된다 |
+| 외출할 명분과 동기가 부족해 집 안에 머무는 시간이 많아진다 | 외출이 부담이 아닌, 일상의 자연스러운 습관으로 자리잡는다 |
+| 외출이 점점 심리적 부담으로 느껴지고, 고립이 심화된다 | 다시 사회적 접점을 만들고, 새로운 관계와 연결을 경험한다 |
 
 ## About Team. 'DiscoPangPang'
 &nbsp;&nbsp;&nbsp;&nbsp;`유쾌`하고 `열정` 넘치는 팀 분위기와 아이 디어가 `‘팡팡’` 튀어오르는 팀 에너지를 의미
@@ -214,9 +211,6 @@
 </p>
 
 
-## App Link
-
-&nbsp;&nbsp;&nbsp;&nbsp;배포 예정.
 
 ---
 
